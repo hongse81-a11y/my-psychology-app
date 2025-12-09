@@ -1,0 +1,79 @@
+{
+  "name": "my-psychology-app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "./",
+  "main": "electron.js",
+  "description": "나만의 AI 심리상담 프로그램",
+  "author": "MyName",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "electron-is-dev": "^3.0.1",
+    "firebase": "^12.6.0",
+    "googleapis": "^167.0.0",
+    "nodemailer": "^7.0.11",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.10.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^39.2.4",
+    "electron-builder": "^26.0.12",
+    "wait-on": "^9.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "cross-env CI=false react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron:dev": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:build": "npm run build && electron-builder"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "build": {
+    "extends": null,
+    "appId": "com.my-psychology.app",
+    "productName": "나만의 심리상담사",
+    "files": [
+      "build/**/*",
+      "electron.js",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      "google-sheet-key.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/favicon.ico"
+    }
+  }
+}
